@@ -1,1 +1,0 @@
-{"ast":null,"code":"const routes = [{\n  path: '',\n  loadChildren: () => import('./containers/home/home.module').then(m => m.HomeModule)\n}];\nexport default routes;","map":null,"metadata":{},"sourceType":"module"}
