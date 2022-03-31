@@ -1,0 +1,24 @@
+<div class="something">
+  <h3 class="title">componente que hace pare de avaluos mf</h3>
+  <p>
+    este componente es una prueba para saber como utilizar componentes de forma
+    normal importandolo desde un microfronted externo y pasando inputs
+  </p>
+  <p>
+    el texto input sera el siguiente
+    <q>{{ data }}</q>
+  </p>
+  <br />
+  <hr />
+  <br />
+  <button (click)="handleButtonClick()">Clic para emitir evento</button>
+  <button (click)="handleButtonClick2()">
+    Clic en mi para aumentar el contador
+  </button>
+
+  <div>
+    <ng-content select="[header]"></ng-content>
+    <ng-content></ng-content>
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>

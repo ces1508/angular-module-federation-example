@@ -1,0 +1,1 @@
+{"ast":null,"code":"const routes = [{\n  path: '',\n  loadChildren: () => import('./containers/home/home.module').then(m => m.HomeModule)\n}, {\n  path: 'avaluos',\n  loadChildren: () => import('avaluosMf/Avaluo').then(m => m.AvaluoModule)\n}];\nexport default routes;","map":null,"metadata":{},"sourceType":"module"}
