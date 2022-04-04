@@ -1,3 +1,4 @@
+import { LoadRemoteModuleOptions } from '@angular-architects/module-federation';
 import {
   AfterViewInit,
   Component,
@@ -5,10 +6,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import {
-  RemoteComponent,
-  RemoteOptions,
-} from '../../models/remoteComponent.model';
+import { IRemoteComponent } from '../../models/remoteComponent.model';
 import { LoadRemoteComponentService } from '../../services/load-remote-component/load-remote-component.service';
 
 @Component({
@@ -21,7 +19,7 @@ export class LoadRemoteComponent implements AfterViewInit {
   container: ViewContainerRef;
   @Input() props: any = {};
   @Input() events: any[] = [];
-  @Input() componentData: RemoteOptions;
+  @Input() componentData: IRemoteComponent;
   constructor(private loadRemote: LoadRemoteComponentService) {}
 
   async ngAfterViewInit() {
@@ -29,7 +27,7 @@ export class LoadRemoteComponent implements AfterViewInit {
     const config = {
       ...this.componentData,
       config: { props, events },
-    } as RemoteComponent<any, any>;
+    };
     await this.loadRemote.loadComponent<any, any>(this.container, config);
   }
 }

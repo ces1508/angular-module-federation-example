@@ -1,30 +1,32 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   IEventHandler,
-  RemoteComponent,
+  IRemoteComponent,
 } from '../../models/remoteComponent.model';
 import {
   ISomethingComponentInput,
   SomethingComponentEventsNames,
 } from '../../models/something-component.model';
-import { LoadRemoteComponentService } from '../../services/load-remote-component/load-remote-component.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  @ViewChild('loadMfComponent', { read: ViewContainerRef, static: true })
-  container: ViewContainerRef;
+  @ViewChild('cardContainer', { read: ViewContainerRef, static: true })
+  cardContainer: ViewContainerRef;
   title: string = 'Shell';
-  constructor() {}
 
   counter = 1;
   counter2 = 2;
 
   handleIncrement = () => {
     this.counter++;
+  };
+
+  redirectToAvaluos = () => {
+    this.router.navigate(['/avaluos']);
   };
 
   handleIncrement2 = () => {
@@ -35,11 +37,11 @@ export class HomeComponent {
     this.counter2 += increment;
   };
 
-  somethingConfigData = {
+  somethingConfigData: IRemoteComponent = {
     componentName: 'SomethingComponent',
-    displayName: 'somethingmf',
+    displayName: 'app-something',
     exposedModule: './SomethingComponent',
-    type: 'module',
+    type: 'component',
     remoteEntry: 'http://localhost:4003/remoteEntry.js',
   };
 
@@ -56,6 +58,10 @@ export class HomeComponent {
       eventHandler: this.handleIncrement,
       eventName: 'onHandleClick',
     },
+    {
+      eventHandler: this.redirectToAvaluos,
+      eventName: 'onHandleClick2',
+    },
   ];
 
   somethingComponentEvents2: IEventHandler<SomethingComponentEventsNames>[] = [
@@ -68,6 +74,16 @@ export class HomeComponent {
       eventName: 'onHandleClick2',
     },
   ];
+
+  avaluosCardConfig: IRemoteComponent = {
+    componentName: 'CardComponent',
+    displayName: 'av-card',
+    exposedModule: './CardComponent',
+    remoteEntry: 'http://localhost:4003/remoteEntry.js',
+    type: 'component',
+  };
+
+  constructor(private router: Router) {}
 
   // async ngAfterViewInit() {
   //   const configRemoteComponent: RemoteComponent<

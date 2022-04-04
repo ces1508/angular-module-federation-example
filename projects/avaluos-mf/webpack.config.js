@@ -2,6 +2,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const mf = require("@angular-architects/module-federation/webpack");
 const path = require("path");
 const share = mf.share;
+const package = require('../../package.json')
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
@@ -30,14 +31,15 @@ module.exports = {
       library: { type: "module" },
       filename: "remoteEntry.js",
       exposes: {
+        './CardComponent': './projects/avaluos-mf/src/app/components/card/card.component.ts',
         './AvaluoModule': './projects/avaluos-mf/src/app/containers/avaluo/avaluo.module.ts',
-        './SomethingComponent': './projects/avaluos-mf/src/app/components/something/something.component.ts'
+        './SomethingComponent': './projects/avaluos-mf/src/app/components/something/something.component.ts',
       },
       shared: share({
-        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/core": { singleton: false, strictVersion: true, requiredVersion: package.dependencies['@angular/core'] },
+        "@angular/common": { singleton: false, strictVersion: true, requiredVersion: package.dependencies['@angular/common'] },
+        "@angular/common/http": { singleton: false, strictVersion: true, requiredVersion: package.dependencies['@angular/common/http'] },
+        "@angular/router": { singleton: false, strictVersion: true, requiredVersion: package.dependencies['@angular/router'] },
         ...sharedMappings.getDescriptors()
       })
     }),

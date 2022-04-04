@@ -1,4 +1,3 @@
-import { LoadRemoteModuleOptions } from '@angular-architects/module-federation';
 import { Component } from '@angular/core';
 
 export interface IEventHandler<tev> {
@@ -6,25 +5,19 @@ export interface IEventHandler<tev> {
   eventHandler: Function;
 }
 
-export type RemoteOptions = LoadRemoteModuleOptions & {
-  displayName: string;
-  componentName: string;
-};
-
 interface IRemoteComponentInternalData<tp, tev> {
   props?: tp;
   events?: IEventHandler<tev>[];
 }
 
-export interface RemoteComponent<tp, tev> {
+export declare type IRemoteComponent<tp = any, tev = any> = {
   displayName: string;
   componentName: string;
-  type: 'module' | 'string';
+  type: 'component';
   exposedModule: string;
   remoteEntry: string;
   config?: IRemoteComponentInternalData<tp, tev>;
-}
-
-export interface RemoteComponentReturn {
+};
+export interface IRemoteComponentReturn {
   instance: Component;
 }

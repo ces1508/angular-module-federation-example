@@ -2,10 +2,10 @@ import {
   loadRemoteModule,
   LoadRemoteModuleOptions,
 } from '@angular-architects/module-federation';
-import { Injectable, ViewContainerRef } from '@angular/core';
+import { Component, Injectable, ViewContainerRef } from '@angular/core';
 import {
-  RemoteComponent,
-  RemoteComponentReturn,
+  IRemoteComponent,
+  IRemoteComponentReturn,
 } from '../../models/remoteComponent.model';
 
 @Injectable({
@@ -16,38 +16,48 @@ export class LoadRemoteComponentService {
 
   public async loadComponent<tp, tev>(
     container: ViewContainerRef,
-    componentData: RemoteComponent<tp, tev>
-  ): Promise<RemoteComponentReturn> {
+    componentData: IRemoteComponent<tp, tev>
+  ): Promise<IRemoteComponentReturn> {
+    if (componentData.type !== 'component')
+      throw new Error('El tipo debe ser componente');
     try {
       container.clear();
       const component = await loadRemoteModule({
         ...componentData,
+        type: 'module',
       } as LoadRemoteModuleOptions);
-
-      if (component && component[componentData.componentName]) {
-        const ref = container.createComponent(
-          component[componentData.componentName]
-        ).instance as any;
-
-        const { props, events } = componentData.config;
-        if (props) {
-          for (let prop in props) {
-            ref[prop] = componentData.config.props[prop];
-          }
-        }
-        if (events && events.length > 0) {
-          events.forEach((ev) => {
-            ref[ev.eventName].subscribe(ev.eventHandler);
-          });
-        }
-
-        return ref;
-      }
+      return this.renderComponent(component, container, componentData);
     } catch (e) {
+      console.log(e.message);
       console.warn(
-        `failed to create remote component "${componentData.componentName}"`
+        `failed to create remote component --->"${componentData.componentName}"`
       );
       return null;
     }
+  }
+
+  private renderComponent(
+    component: Component,
+    container: ViewContainerRef,
+    data: IRemoteComponent
+  ): IRemoteComponentReturn {
+    if (component && component[data.componentName]) {
+      const ref = container.createComponent(component[data.componentName])
+        .instance as any;
+
+      const { props, events } = data.config;
+      if (props) {
+        for (let prop in props) {
+          ref[prop] = data.config.props[prop];
+        }
+      }
+      if (events && events.length > 0) {
+        events.forEach((ev) => {
+          ref[ev.eventName].subscribe(ev.eventHandler);
+        });
+      }
+      return ref;
+    }
+    return null;
   }
 }

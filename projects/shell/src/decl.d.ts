@@ -1,4 +1,4 @@
-// declare module 'avaluosMf/AvaluoModule';
+declare module 'avaluosMf/AvaluoModule';
 // declare module 'avaluosMf/SomethingComponent';
 
 declare const __webpack_init_sharing__: (shareScope: string) => Promise<void>;
