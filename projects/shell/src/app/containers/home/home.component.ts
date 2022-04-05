@@ -84,32 +84,4 @@ export class HomeComponent {
   };
 
   constructor(private router: Router) {}
-
-  // async ngAfterViewInit() {
-  //   const configRemoteComponent: RemoteComponent<
-  //     ISomethingComponentInput,
-  //     SomethingComponentEventsNames
-  //   > = {
-  //     componentName: 'SomethingComponent',
-  //     displayName: 'somethingmf',
-  //     exposedModule: './SomethingComponent',
-  //     type: 'module',
-  //     remoteEntry: 'http://localhost:4003/remoteEntry.js',
-  //     config: {
-  //       props: {
-  //         data: 'hola mundo desde shell',
-  //       },
-  //       events: [
-  //         {
-  //           eventHandler: this.handleIncrement,
-  //           eventName: 'onHandleClick',
-  //         },
-  //       ],
-  //     },
-  //   };
-  //   await this.loadRemote.loadComponent<
-  //     ISomethingComponentInput,
-  //     SomethingComponentEventsNames
-  //   >(this.container, configRemoteComponent);
-  // }
 }
