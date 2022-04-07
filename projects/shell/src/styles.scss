@@ -340,3 +340,21 @@ svg#clouds {
     color: #016d38;
   }
 }
+
+.c-characters-list {
+  background: #d8d8d8;
+  padding: 10px;
+  max-width: 1260px;
+  margin: 0 auto;
+  @media screen and (min-width: 650px) {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  @media screen and (min-width: 950px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

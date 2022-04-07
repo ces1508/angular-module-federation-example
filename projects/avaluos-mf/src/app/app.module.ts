@@ -7,6 +7,8 @@ import { SomethingComponent } from './components/something/something.component';
 import { ValidateTokenDirective } from './directives/validate-token/validate-token.directive';
 import { SomethingSecureComponent } from './components/something-secure/something-secure.component';
 import { CardModule } from './components/card/card.module';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,13 @@ import { CardModule } from './components/card/card.module';
     ValidateTokenDirective,
     SomethingSecureComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CardModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    CardModule,
+    CommonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

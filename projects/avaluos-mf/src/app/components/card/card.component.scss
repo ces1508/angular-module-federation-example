@@ -1,0 +1,26 @@
+.avaluos-card{
+  width: 300px;
+  ::ng-deep {
+    .p-card {
+      overflow: hidden;
+    }
+    .p-card-header {
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+
+  &__image {
+    background-color: #d8d8d8;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  &__name {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

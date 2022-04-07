@@ -16,6 +16,15 @@ const routes: Routes = [
         type: 'module',
       }).then((m) => m.AvaluoModule),
   },
+  {
+    path: 'characters',
+    loadChildren: () =>
+      loadRemoteModule({
+        exposedModule: './CharactersModule',
+        remoteEntry: 'http://localhost:4003/remoteEntry.js',
+        type: 'module',
+      }).then((m) => m.CharactersModule),
+  },
 ];
 
 export default routes;

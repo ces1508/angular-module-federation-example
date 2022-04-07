@@ -155,7 +155,12 @@
               "projects/shell/src/favicon.ico",
               "projects/shell/src/assets"
             ],
-            "styles": ["projects/shell/src/styles.scss"],
+            "styles": [
+              "projects/shell/src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
+            ],
             "scripts": [],
             "extraWebpackConfig": "projects/shell/webpack.config.js",
             "commonChunk": false

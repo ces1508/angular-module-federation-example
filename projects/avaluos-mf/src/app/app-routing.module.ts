@@ -12,6 +12,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./containers/avaluo/avaluo.module').then((m) => m.AvaluoModule),
   },
+  {
+    path: 'characters',
+    loadChildren: () =>
+      import('./containers/characters/characters.module').then(
+        (m) => m.CharactersModule
+      ),
+  },
 ];
 
 @NgModule({

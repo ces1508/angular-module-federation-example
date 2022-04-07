@@ -1,0 +1,18 @@
+.dot-status {
+  --dot-size: 15px;
+  --dot-status-alive-color: #17cc17;
+  --dot-status-dead-color: red;
+  width: var(--dot-status-size, var(--dot-size));
+  height: var(--dot-status-size, var(--dot-size));
+  background: var(--dot-status-default-color, #999);
+  border-radius: 50%;
+  display: inline-block;
+
+  &--alive {
+    background: var(--dots-status-primary-color, var(--dot-status-alive-color));
+  }
+  &--dead {
+    background: var(--dots-status-secondary-color, var(--dot-status-dead-color));
+  }
+
+}

@@ -34,12 +34,13 @@ module.exports = {
         './CardComponent': './projects/avaluos-mf/src/app/components/card/card.component.ts',
         './AvaluoModule': './projects/avaluos-mf/src/app/containers/avaluo/avaluo.module.ts',
         './SomethingComponent': './projects/avaluos-mf/src/app/components/something/something.component.ts',
+        './CharactersModule': './projects/avaluos-mf/src/app/containers/characters/characters.module'
       },
       shared: share({
-        "@angular/core": { singleton: false, strictVersion: true, requiredVersion: package.dependencies['@angular/core'] },
-        "@angular/common": { singleton: false, strictVersion: true, requiredVersion: package.dependencies['@angular/common'] },
-        "@angular/common/http": { singleton: false, strictVersion: true, requiredVersion: package.dependencies['@angular/common/http'] },
-        "@angular/router": { singleton: false, strictVersion: true, requiredVersion: package.dependencies['@angular/router'] },
+        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: package.dependencies['@angular/core'] },
+        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: package.dependencies['@angular/common'] },
+        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: package.dependencies['@angular/common/http'] },
+        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: package.dependencies['@angular/router'] },
         ...sharedMappings.getDescriptors()
       })
     }),

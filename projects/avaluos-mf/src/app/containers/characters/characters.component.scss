@@ -1,0 +1,11 @@
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+
+  &__title {
+    text-align: center;
+    padding: 20px;
+  }
+}

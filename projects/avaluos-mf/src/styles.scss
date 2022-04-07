@@ -290,3 +290,10 @@ svg#clouds {
     visibility: hidden;
   }
 }
+.d-flex {
+  display: flex;
+  border: 10px solid red;
+}
+:root {
+  --dot-size: 20px;
+}

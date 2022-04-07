@@ -81,8 +81,18 @@ export class HomeComponent {
 
   avaluosCardInputs = {
     data: {
-      title: 'titulo de ejemplo',
-      message: 'mensaje de ejemplo',
+      id: 1,
+      name: 'Rick Sanchez',
+      status: 'Alive',
+      species: 'Human',
+      type: '',
+      gender: 'Male',
+      location: {
+        name: 'Citadel of Ricks',
+        url: 'https://rickandmortyapi.com/api/location/3',
+      },
+      image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+      episodes: 50,
     },
   };
 
