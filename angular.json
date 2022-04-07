@@ -27,7 +27,12 @@
               "projects/avaluos-mf/src/favicon.ico",
               "projects/avaluos-mf/src/assets"
             ],
-            "styles": ["projects/avaluos-mf/src/styles.scss"],
+            "styles": [
+              "projects/avaluos-mf/src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
+            ],
             "scripts": [],
             "extraWebpackConfig": "projects/avaluos-mf/webpack.config.js",
             "commonChunk": false

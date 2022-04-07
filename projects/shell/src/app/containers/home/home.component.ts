@@ -8,6 +8,8 @@ import {
   ISomethingComponentInput,
   SomethingComponentEventsNames,
 } from '../../models/something-component.model';
+import { avaluosMf } from '../../constants/microfrontend';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -37,20 +39,20 @@ export class HomeComponent {
     this.counter2 += increment;
   };
 
-  somethingConfigData: IRemoteComponent = {
-    componentName: 'SomethingComponent',
-    displayName: 'app-something',
-    exposedModule: './SomethingComponent',
-    type: 'component',
-    remoteEntry: 'http://localhost:4003/remoteEntry.js',
-  };
+  somethingConfigData = avaluosMf.somethingComponent;
 
   somethingComponentInputs: ISomethingComponentInput = {
-    data: 'hola mundo desde shell',
+    data: {
+      message: 'Mensaje para mostar cuando el token sea valido',
+      token: avaluosMf.token,
+    },
   };
 
   somethingComponentInputs2: ISomethingComponentInput = {
-    data: 'hola mundo desde shell para el segundo componente',
+    data: {
+      message: 'hola mundo desde shell para el segundo componente',
+      token: avaluosMf.token,
+    },
   };
 
   somethingComponentEvents: IEventHandler<SomethingComponentEventsNames>[] = [
@@ -75,12 +77,13 @@ export class HomeComponent {
     },
   ];
 
-  avaluosCardConfig: IRemoteComponent = {
-    componentName: 'CardComponent',
-    displayName: 'av-card',
-    exposedModule: './CardComponent',
-    remoteEntry: 'http://localhost:4003/remoteEntry.js',
-    type: 'component',
+  avaluosCardConfig = avaluosMf.cardComponent;
+
+  avaluosCardInputs = {
+    data: {
+      title: 'titulo de ejemplo',
+      message: 'mensaje de ejemplo',
+    },
   };
 
   constructor(private router: Router) {}

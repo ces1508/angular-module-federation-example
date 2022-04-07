@@ -1,4 +1,7 @@
-<div class="something">
+<div
+  class="something"
+  *ngIf="validateTokenService.isValidToken | async; else elseTemplate"
+>
   <h3 class="title">componente que hace pare de avaluos mf</h3>
   <p>
     <em class="icon-campana icon-red"></em>
@@ -7,7 +10,7 @@
   </p>
   <p>
     el texto input sera el siguiente
-    <q>{{ data }}</q>
+    <q>{{ data.message }}</q>
   </p>
   <br />
   <hr />
@@ -18,10 +21,8 @@
   <button class="mf-button secondary" (click)="handleButtonClick2()">
     Clic en mi para aumentar el contador
   </button>
-
-  <div>
-    <ng-content select="[header]"></ng-content>
-    <ng-content></ng-content>
-    <ng-content select="[footer]"></ng-content>
-  </div>
 </div>
+
+<ng-template #elseTemplate>
+  <div class="loader">cargando por favor espere ...</div>
+</ng-template>

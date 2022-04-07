@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   avaluosMf: 'http://localhost:4003/remoteEntry.js',
+  avaluosMfToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBsaWNhdGlvbk5hbWUiOiJob21lX2FwcCIsImFwcGxpY2F0aW9uSUQiOiJob21lc2IifQ.Mxuiy-GEl_97WCzBGZGzQ0llYQXF1i0IxPx4PORrirQ',
 };
 
 /*

@@ -1,0 +1,9 @@
+<div>
+  <div *ngIf="validateTokenService.isValidToken | async; else elseTemplate">
+    <h1>esta es la parte visible cuando el token es seguro</h1>
+    <app-something [data]="data"></app-something>
+  </div>
+  <ng-template #elseTemplate>
+    <div>cargando ...</div>
+  </ng-template>
+</div>

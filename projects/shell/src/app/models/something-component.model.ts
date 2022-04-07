@@ -1,7 +1,8 @@
-import { Observable } from 'rxjs';
-
 export interface ISomethingComponentInput {
-  data: string;
+  data: {
+    message: string;
+    token: string;
+  };
 }
 
 export type SomethingComponentEventsNames = 'onHandleClick' | 'onHandleClick2';
