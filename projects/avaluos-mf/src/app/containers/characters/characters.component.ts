@@ -23,9 +23,10 @@ export class CharactersComponent implements OnInit {
     this.rickAndMortyService
       .getAllCharacters(page)
       .subscribe((response: IRickAndMortyResponse) => {
-        this.characters = response.results;
+        this.characters = response.results.map((character) => {
+          return character;
+        });
         this.quantity = response.info.count;
-        console.log(this);
       });
   }
 }

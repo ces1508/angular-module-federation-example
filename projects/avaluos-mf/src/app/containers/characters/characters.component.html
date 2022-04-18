@@ -1,6 +1,10 @@
 <h1 class="characters__title">listado de personajes en rick and morthy</h1>
 <div class="characters c-characters-list">
-  <app-card *ngFor="let character of characters" [data]="character"></app-card>
+  <app-card
+    *ngFor="let character of characters"
+    [data]="character"
+    buttonMessage="Conocer Mas"
+  ></app-card>
 </div>
 <p-paginator
   [totalRecords]="quantity"

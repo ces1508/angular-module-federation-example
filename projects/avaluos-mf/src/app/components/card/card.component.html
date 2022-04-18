@@ -6,20 +6,30 @@
     <div>
       <div class="avaluos-card__name">
         <p>{{ data.name }}</p>
-        <app-dot-status [status]="data.status"></app-dot-status>
+        <app-dot-status [status]="data.status || ''"></app-dot-status>
       </div>
-      <p>
+      <p *ngIf="data.species && data.gender">
         {{ data.species }} | <span>{{ data.gender }}</span>
       </p>
     </div>
-    <div>
+    <div *ngIf="data.location">
       <p>Ubicación</p>
       <p>{{ data.location.name }}</p>
     </div>
-    <div>
+    <div *ngIf="data.episodes">
       <p>
         episodios <span>{{ data.episodes }}</span>
       </p>
     </div>
+    <ng-template pTemplate="footer" *ngIf="buttonMessage">
+      <button
+        pButton
+        type="button"
+        pButton
+        pRipple
+        class="p-button-raised button-block"
+        [label]="buttonMessage"
+      ></button>
+    </ng-template>
   </p-card>
 </div>
