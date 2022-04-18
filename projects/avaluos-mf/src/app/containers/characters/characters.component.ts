@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICharacter } from '../../models/character.model';
 import { IRickAndMortyResponse } from '../../models/response-rick-and-morty.model';
 import { RickAndMortyService } from '../../services/rick-and-morty/rick-and-morty.service';
@@ -13,7 +14,10 @@ export class CharactersComponent implements OnInit {
   quantity: number = 1;
   quantityPerPage: number = 20;
   characters: ICharacter[];
-  constructor(public rickAndMortyService: RickAndMortyService) {}
+  constructor(
+    public rickAndMortyService: RickAndMortyService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getAllCharacters();
@@ -28,5 +32,9 @@ export class CharactersComponent implements OnInit {
         });
         this.quantity = response.info.count;
       });
+  }
+
+  handleCardClick(data: ICharacter) {
+    this.router.navigate(['characters', data.id]);
   }
 }
